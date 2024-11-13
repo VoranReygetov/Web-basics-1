@@ -1,7 +1,7 @@
 $(function () {
     const socket = io();
 
-    // Перевірка, чи є дані в sessionStorage, щоб відновити сесію
+    // Перевірка, чи є дані в sessionStorage
     const savedNickname = sessionStorage.getItem('userNickname');
     const savedRoom = sessionStorage.getItem('currentRoom');
 
@@ -15,7 +15,7 @@ $(function () {
     function joinRoom(nickname, room) {
         socket.emit('set nickname', nickname, room);
         
-        // Зберігаємо дані в sessionStorage
+        // Зберігання даних в sessionStorage
         sessionStorage.setItem('userNickname', nickname);
         sessionStorage.setItem('currentRoom', room);
     }
