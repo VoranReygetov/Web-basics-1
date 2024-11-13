@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+}
+
+
+#messages {
+    list-style-type: none;
+    padding: 0;
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+#messages li {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+#messages li:last-child {
+    border-bottom: none;
+}
+
+#messageForm {
+    margin-top: 10px;
+}
+
+.input-group {
+    width: 100%;
+}
+
+.alert {
+    text-align: center;
+    display: none;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}

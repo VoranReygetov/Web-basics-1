@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чат на Socket.IO з кімнатами та нікнеймами</title>
+    <!-- Підключення Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Підключення власного CSS -->
+    <link href="/styles.css" rel="stylesheet">
+    <!-- Підключення Socket.IO -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Підключення jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Підключення власного JS -->
+    <script src="/script.js"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Чат з кімнатами та нікнеймами</h1>
+        <div class="form-group">
+            <label for="nickname">Ваш нікнейм:</label>
+            <input id="nickname" class="form-control" placeholder="Введіть ваш нікнейм" autocomplete="off" />
+        </div>
+        <div class="form-group">
+            <label for="room">Назва кімнати:</label>
+            <input id="room" class="form-control" placeholder="Введіть назву кімнати" autocomplete="off" />
+        </div>
+        <button id="joinRoom" class="btn btn-primary btn-block">Приєднатися</button>
+        <div id="errorMessage" class="alert alert-danger mt-2" style="display:none;"></div>
+
+        <ul id="messages" class="list-group mt-4"></ul>
+
+        <form id="messageForm">
+            <div class="input-group mt-3">
+                <input id="m" type="text" class="form-control" autocomplete="off" placeholder="Ваше повідомлення" />
+                <div class="input-group-append">
+                    <button class="btn btn-success" type="submit">Надіслати</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
