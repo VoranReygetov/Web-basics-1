@@ -6,7 +6,6 @@ $(function () {
     const savedRoom = sessionStorage.getItem('currentRoom');
 
     if (savedNickname && savedRoom) {
-        // Якщо дані збережено, автоматично приєднуємося до кімнати
         $('#nickname').val(savedNickname);
         $('#room').val(savedRoom);
         joinRoom(savedNickname, savedRoom);
@@ -28,7 +27,7 @@ $(function () {
 
         if (userNickname && currentRoom) {
             joinRoom(userNickname, currentRoom);
-            $('#errorMessage').hide(); // очищаємо помилку
+            $('#errorMessage').hide();
         } else {
             $('#errorMessage').text('Будь ласка, введіть нікнейм і назву кімнати без пробілів').show();
         }
@@ -37,19 +36,19 @@ $(function () {
     // Отримання та відображення повідомлень
     socket.on('chat message', function(msg) {
         $('#messages').append($('<li>').text(msg));
-        $('#messages').scrollTop($('#messages')[0].scrollHeight); // Прокручування до останнього повідомлення
+        $('#messages').scrollTop($('#messages')[0].scrollHeight);
     });
 
     // Надсилання повідомлення в кімнату
     $('#messageForm').submit(function(e) {
         e.preventDefault();
-        const message = $('#m').val().trim();  // Trim to remove leading/trailing whitespaces
+        const message = $('#m').val().trim();
 
         // Перевірка на порожній рядок
         if (message !== '') {
             if (sessionStorage.getItem('currentRoom') && sessionStorage.getItem('userNickname')) {
                 socket.emit('chat message', message);
-                $('#m').val(''); // Очищення поля після відправки
+                $('#m').val('');
             } else {
                 alert('Спочатку приєднайтесь до кімнати');
             }

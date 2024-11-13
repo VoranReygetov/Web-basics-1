@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
-// Serve static files from the 'public' directory
+// Serve static files from the 'app' directory
 app.use(express.static(path.join(__dirname, '../app')));
 
 app.get('/', (req, res) => {
@@ -15,8 +15,8 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-    let userNickname = ''; // Нікнейм користувача
-    let currentRoom = ''; // Назва поточної кімнати
+    let userNickname = '';
+    let currentRoom = ''; 
 
     // Отримання нікнейма та приєднання до кімнати
     socket.on('set nickname', (nickname, room) => {
@@ -32,7 +32,7 @@ io.on('connection', (socket) => {
     // Обробка повідомлень у кімнаті
     socket.on('chat message', (msg) => {
         if (msg === '') {
-            return; // Prevent sending empty messages
+            return;
         }
         if (currentRoom) {
             io.to(currentRoom).emit('chat message', `${userNickname}: ${msg}`);
